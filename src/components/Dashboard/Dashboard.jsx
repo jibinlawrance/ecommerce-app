@@ -2,26 +2,7 @@ import React, { useEffect } from 'react'
 import "./Dashboard.scss"
 
 function Dashboard({products, addToCart}) {
-
-    //   let API = "https://dummyjson.com/products";
-
-    //   const fetchData = async (url) => {
-    //     try {
-    //         const res = await fetch(url);
-    //         const data = await res.json();
-    //         console.log(data)
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    //   }
-
-    //   useEffect(()=>{
-    //     fetchData(API)
-    //   },[])
-
-    // check if item is already added 
     
-
     return (
     <div className='container product-card-wrap'>
         {
