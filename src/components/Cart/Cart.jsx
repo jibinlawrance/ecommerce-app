@@ -18,8 +18,9 @@ function Cart({cart, count}) {
 
   const decreaseCount = (cartIndex) => {
     const _CART = CART.map((item, index) => {
-      return cartIndex === index ? { ...item, quantity: item.quantity > 0 ? item.quantity - 1 : 0} : item
+      return cartIndex === index ? { ...item, quantity: item.quantity > 0 ? item.quantity - 1 : 0 } : item
     })
+    
     setCART(_CART)
   }
 
@@ -50,7 +51,7 @@ function Cart({cart, count}) {
             )
           })
         }
-        <p>Total: <span></span>
+        <p style={{textAlign: 'right'}} >Total: <span></span>
           {
             CART.map(item => item.price * item.quantity).reduce((total,value) => total + value, 0)
           }

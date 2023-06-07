@@ -32,6 +32,12 @@ function App() {
     ))
   }
 
+  const removeFromCart = (data) => {
+    setCart(prevList => (
+      prevList.filter(item => item.id !== data.id)
+    ))
+  }
+
   const [showCart, setShowCart] = useState(false) 
 
   const handleShow = (value) => {
@@ -45,7 +51,7 @@ function App() {
         handleShow={handleShow}
       />
       {
-        showCart ? <Cart count={cart.length} cart={cart}/> : <Dashboard products={products} addToCart={addToCart} cart={cart}/>
+        showCart ? <Cart count={cart.length} cart={cart}/> : <Dashboard products={products} addToCart={addToCart} cart={cart} removeFromCart={removeFromCart}/>
       }
       
       <Footer />

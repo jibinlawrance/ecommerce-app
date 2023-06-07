@@ -3,7 +3,7 @@ import "./Dashboard.scss"
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import PlaceholderImage from "../../assets/placeholder.png";
 
-function Dashboard({products, addToCart, cart}) {
+function Dashboard({products, addToCart, cart, removeFromCart}) {
     
     const checkAdded = (product_id) => {
         for(let i=0; i<cart.length; i++){
@@ -45,7 +45,8 @@ function Dashboard({products, addToCart, cart}) {
                             
                             <button
                                 className="product-card__desc-btn disabled"
-                            >Added to cart
+                                onClick={() => removeFromCart(product)}
+                            >Remove from cart
                             </button> 
 
                             : <button
