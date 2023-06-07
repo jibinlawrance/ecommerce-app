@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import "./Dashboard.scss"
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import PlaceholderImage from "../../assets/placeholder.png";
 
 function Dashboard({products, addToCart, cart}) {
     
@@ -21,11 +23,19 @@ function Dashboard({products, addToCart, cart}) {
                         className='product-card'    
                     >
                         <div className="product-card__thumbnail-wrap">
-                            <img 
+                            <LazyLoadImage 
+                                src={product.thumbnail}
+                                width={408}
+                                height={229}
+                                placeholderSrc={PlaceholderImage}
+                                alt={product.title}
+                                className='product-card__thumbnail'
+                            />
+                            {/* <img 
                                 src={product.thumbnail}
                                 alt={product.title} 
                                 className='product-card__thumbnail'
-                            />
+                            /> */}
                         </div>
                         <div className="product-card__desc">
                             <p>{product.title} | {product.category}</p>
