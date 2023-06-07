@@ -38,6 +38,10 @@ function App() {
     ))
   }
 
+  const updateCart = (cart) => {
+    setCart(() => cart)
+  }
+
   const [showCart, setShowCart] = useState(false) 
 
   const handleShow = (value) => {
@@ -51,7 +55,7 @@ function App() {
         handleShow={handleShow}
       />
       {
-        showCart ? <Cart count={cart.length} cart={cart}/> : <Dashboard products={products} addToCart={addToCart} cart={cart} removeFromCart={removeFromCart}/>
+        showCart ? <Cart count={cart.length} cart={cart} updateCart={updateCart}/> : <Dashboard products={products} addToCart={addToCart} cart={cart} removeFromCart={removeFromCart}/>
       }
       
       <Footer />
