@@ -12,6 +12,14 @@
         border-radius: 10px;
         overflow: hidden;
 
+        @media screen and (max-width: 768px){
+            width: 49%;
+        }
+
+        @media screen and (max-width: 480px) {
+            width: 100%;
+        }
+
         &__thumbnail {
             max-width: 100%;
             aspect-ratio: 16/9;
@@ -33,6 +41,11 @@
                 background-color: #333;
                 color: #fff;
                 cursor: pointer;
+                
+                &.disabled {
+                    background-color: #777;
+                    pointer-events: none;
+                }
             }
         }
     }

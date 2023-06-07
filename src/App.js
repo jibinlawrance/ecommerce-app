@@ -32,7 +32,7 @@ function App() {
     ))
   }
 
-  const [showCart, setShowCart] = useState(false)
+  const [showCart, setShowCart] = useState(false) 
 
   const handleShow = (value) => {
     setShowCart(value)
@@ -45,7 +45,7 @@ function App() {
         handleShow={handleShow}
       />
       {
-        showCart ? <Cart count={cart.length} cart={cart}/> : <Dashboard products={products} addToCart={addToCart}/>
+        showCart ? <Cart count={cart.length} cart={cart}/> : <Dashboard products={products} addToCart={addToCart} cart={cart}/>
       }
       
       <Footer />
