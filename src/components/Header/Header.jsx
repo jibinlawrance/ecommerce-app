@@ -13,7 +13,7 @@ function Header(props) {
         <p
           style={{cursor:"pointer"}}
           onClick={() => props.handleShow(true)}
-        >Cart <sup>{props.count}</sup></p>
+        >Cart <sup>{props.count > 0 ? props.count : <>&nbsp;&nbsp;</>}</sup></p>
       </nav>
     </header>
   )

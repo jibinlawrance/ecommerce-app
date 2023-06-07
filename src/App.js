@@ -55,7 +55,7 @@ function App() {
         handleShow={handleShow}
       />
       {
-        showCart ? <Cart count={cart.length} cart={cart} updateCart={updateCart}/> : <Dashboard products={products} addToCart={addToCart} cart={cart} removeFromCart={removeFromCart}/>
+        showCart ? <Cart count={cart.length} cart={cart} updateCart={updateCart} removeFromCart={removeFromCart} /> : <Dashboard products={products} addToCart={addToCart} cart={cart} removeFromCart={removeFromCart}/>
       }
       
       <Footer />

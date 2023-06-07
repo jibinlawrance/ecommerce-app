@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./Cart.scss"
 
-function Cart({cart, count, updateCart}) {
+function Cart({cart, count, updateCart, removeFromCart}) {
 
   const increaseCount = (cartIndex) => {
     const _CART = cart.map((item, index) => {
@@ -16,6 +16,14 @@ function Cart({cart, count, updateCart}) {
     })
     
     updateCart(_CART)
+
+    for(let i=0; i < cart.length; i++) {
+      if(cartIndex === i && cart[i].quantity == 1) {
+        // console.log("zero")
+        removeFromCart(cart[i])
+      }
+    }
+
   }
 
   return (
@@ -45,7 +53,7 @@ function Cart({cart, count, updateCart}) {
             )
           })
         }
-        <p style={{textAlign: 'right'}} >Total: <span></span>
+        <p style={{textAlign: 'right'}} ><b>Total:</b> Rs. <span></span>
           {
             cart.map(item => item.price * item.quantity).reduce((total,value) => total + value, 0)
           }
