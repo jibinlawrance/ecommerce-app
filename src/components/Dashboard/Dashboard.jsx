@@ -3,7 +3,6 @@ import "./Dashboard.scss"
 
 function Dashboard({products, addToCart, cart}) {
     
-    
     const checkAdded = (product_id) => {
         for(let i=0; i<cart.length; i++){
             if(cart[i].id == product_id){

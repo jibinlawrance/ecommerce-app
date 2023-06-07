@@ -32,7 +32,7 @@ function App() {
     ))
   }
 
-  const [showCart, setShowCart] = useState(false)
+  const [showCart, setShowCart] = useState(false) 
 
   const handleShow = (value) => {
     setShowCart(value)
