@@ -39,7 +39,6 @@ function Cart({cart, count, updateCart, removeFromCart}) {
                   src={cartItem.thumbnail} 
                   alt={cartItem.title} 
                 />
-                <div className='cart-item__desc'>
                   <p>{cartItem.title}</p>
                   <div className='cart-item__quantity-wrap'>
                     <button onClick={() => decreaseCount(cartIndex)}>-</button>
@@ -49,7 +48,6 @@ function Cart({cart, count, updateCart, removeFromCart}) {
                     <button onClick={() => increaseCount(cartIndex)}>+</button>
                   </div>
                   <p>Rs. {cartItem.price * cartItem.quantity}</p>
-                </div>
               </div>
             )
           })
