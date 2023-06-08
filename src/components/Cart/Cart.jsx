@@ -1,26 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import "./Cart.scss"
 
-function Cart({cart, count}) {
-
-  const [CART, setCART] = useState([])
-
-  useEffect(() => {
-    setCART(cart)
-  },[cart])
+function Cart({cart, count, updateCart, removeFromCart}) {
 
   const increaseCount = (cartIndex) => {
-    const _CART = CART.map((item, index) => {
+    const _CART = cart.map((item, index) => {
       return cartIndex === index ? { ...item, quantity: item.quantity + 1} : item
     })
-    setCART(_CART)
+    updateCart(_CART)
   }
 
   const decreaseCount = (cartIndex) => {
-    const _CART = CART.map((item, index) => {
-      return cartIndex === index ? { ...item, quantity: item.quantity > 0 ? item.quantity - 1 : 0} : item
+    const _CART = cart.map((item, index) => {
+      return cartIndex === index ? { ...item, quantity: item.quantity > 0 ? item.quantity - 1 : 0 } : item
     })
-    setCART(_CART)
+    
+    updateCart(_CART)
+
+    for(let i=0; i < cart.length; i++) {
+      if(cartIndex === i && cart[i].quantity == 1) {
+        // console.log("zero")
+        removeFromCart(cart[i])
+      }
+    }
+
   }
 
   return (
@@ -28,7 +31,7 @@ function Cart({cart, count}) {
       { count > 0 ? 
       <div>
         {
-          CART.map((cartItem,cartIndex) => {
+          cart.map((cartItem,cartIndex) => {
             return(
               <div key={cartIndex} className='cart-item'>
                 <img 
@@ -36,23 +39,22 @@ function Cart({cart, count}) {
                   src={cartItem.thumbnail} 
                   alt={cartItem.title} 
                 />
-                <p>{cartItem.title}</p>
-                <div className='cart-item__quantity-wrap'>
-                  <button onClick={() => decreaseCount(cartIndex)}>-</button>
-                  <p className='cart-item__quantity'>
-                    {cartItem.quantity}
-                  </p>
-                  <button onClick={() => increaseCount(cartIndex)}>+</button>
-                </div>
-                <p>Rs. {cartItem.price * cartItem.quantity}</p>
-
+                  <p>{cartItem.title}</p>
+                  <div className='cart-item__quantity-wrap'>
+                    <button onClick={() => decreaseCount(cartIndex)}>-</button>
+                    <p className='cart-item__quantity'>
+                      {cartItem.quantity}
+                    </p>
+                    <button onClick={() => increaseCount(cartIndex)}>+</button>
+                  </div>
+                  <p>Rs. {cartItem.price * cartItem.quantity}</p>
               </div>
             )
           })
         }
-        <p>Total: <span></span>
+        <p style={{textAlign: 'right'}} ><b>Total:</b> Rs. <span></span>
           {
-            CART.map(item => item.price * item.quantity).reduce((total,value) => total + value, 0)
+            cart.map(item => item.price * item.quantity).reduce((total,value) => total + value, 0)
           }
         </p>        
       </div>

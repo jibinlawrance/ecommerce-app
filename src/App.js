@@ -32,10 +32,26 @@ function App() {
     ))
   }
 
+  const removeFromCart = (data) => {
+    setCart(prevList => (
+      prevList.filter(item => item.id !== data.id)
+    ))
+  }
+
+  const updateCart = (cart) => {
+    setCart(() => cart)
+  }
+
   const [showCart, setShowCart] = useState(false) 
 
   const handleShow = (value) => {
     setShowCart(value)
+  }
+
+  const [filterProduct, setFilteredProduct] = useState('')
+
+  const handleFilterProduct = (input) => {
+    setFilteredProduct(() => input)
   }
 
   return (
@@ -43,9 +59,12 @@ function App() {
       <Header 
         count={cart.length}
         handleShow={handleShow}
+        handleFilterProduct={handleFilterProduct}
+        filterProduct={filterProduct}
+        showCart={showCart}
       />
       {
-        showCart ? <Cart count={cart.length} cart={cart}/> : <Dashboard products={products} addToCart={addToCart} cart={cart}/>
+        showCart ? <Cart count={cart.length} cart={cart} updateCart={updateCart} removeFromCart={removeFromCart} /> : <Dashboard products={products} addToCart={addToCart} cart={cart} removeFromCart={removeFromCart} filterProduct={filterProduct}/>
       }
       
       <Footer />
