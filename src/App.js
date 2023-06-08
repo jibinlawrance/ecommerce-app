@@ -48,14 +48,23 @@ function App() {
     setShowCart(value)
   }
 
+  const [filterProduct, setFilteredProduct] = useState('')
+
+  const handleFilterProduct = (input) => {
+    setFilteredProduct(() => input)
+  }
+
   return (
     <div className="App">
       <Header 
         count={cart.length}
         handleShow={handleShow}
+        handleFilterProduct={handleFilterProduct}
+        filterProduct={filterProduct}
+        showCart={showCart}
       />
       {
-        showCart ? <Cart count={cart.length} cart={cart} updateCart={updateCart} removeFromCart={removeFromCart} /> : <Dashboard products={products} addToCart={addToCart} cart={cart} removeFromCart={removeFromCart}/>
+        showCart ? <Cart count={cart.length} cart={cart} updateCart={updateCart} removeFromCart={removeFromCart} /> : <Dashboard products={products} addToCart={addToCart} cart={cart} removeFromCart={removeFromCart} filterProduct={filterProduct}/>
       }
       
       <Footer />

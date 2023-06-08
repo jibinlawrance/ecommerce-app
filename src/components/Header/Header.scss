@@ -1,11 +1,66 @@
 .header {
+    position: sticky;
+    top: 0px;
     background-color: #333;
     color: #fff;
+    max-width: 1920px;
+    margin: auto;
 
     .navigation {
         display: flex;
-        align-items: center;
         justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
         padding: 15px 20px;
+
+        .brand-icon {
+            cursor: pointer;
+        }
+
+        .search-input {
+            margin: 0px 20px 0px auto;
+            position: relative;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            overflow: hidden;
+
+            @media screen and (max-width: 414px) {
+                order: 1;
+                width: 100%;
+                margin: 10px 0px 0px;
+            }
+            
+            input {
+                padding: 8px 25px 8px 10px;
+                border: none;
+                border-radius: 5px;
+
+                &:focus {
+                    outline-color: #fff;
+                }
+            }
+
+            img {
+                max-width: 100%;
+                position: absolute;
+                right: 6px;
+            }
+        }
+
+        .cart {
+            cursor: pointer;
+            position: relative;
+            span {
+                font-family: monospace;
+                background-color: #fff;
+                color: #333;
+                padding: 1px 4px;
+                border-radius: 4px;
+                position: absolute;
+                font-size: 12px;
+            }
+        }
     }
 }

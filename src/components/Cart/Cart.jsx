@@ -39,16 +39,17 @@ function Cart({cart, count, updateCart, removeFromCart}) {
                   src={cartItem.thumbnail} 
                   alt={cartItem.title} 
                 />
-                <p>{cartItem.title}</p>
-                <div className='cart-item__quantity-wrap'>
-                  <button onClick={() => decreaseCount(cartIndex)}>-</button>
-                  <p className='cart-item__quantity'>
-                    {cartItem.quantity}
-                  </p>
-                  <button onClick={() => increaseCount(cartIndex)}>+</button>
+                <div className='cart-item__desc'>
+                  <p>{cartItem.title}</p>
+                  <div className='cart-item__quantity-wrap'>
+                    <button onClick={() => decreaseCount(cartIndex)}>-</button>
+                    <p className='cart-item__quantity'>
+                      {cartItem.quantity}
+                    </p>
+                    <button onClick={() => increaseCount(cartIndex)}>+</button>
+                  </div>
+                  <p>Rs. {cartItem.price * cartItem.quantity}</p>
                 </div>
-                <p>Rs. {cartItem.price * cartItem.quantity}</p>
-
               </div>
             )
           })
